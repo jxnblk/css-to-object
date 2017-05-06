@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot 1`] = `
+Object {
+  ":hover": Object {
+    "color": "black",
+  },
+  "@media (min-width: 40em)": Object {
+    "margin": 48,
+  },
+  "color": "tomato",
+  "h1": Object {
+    "fontSize": 32,
+  },
+  "margin": 32,
+}
+`;

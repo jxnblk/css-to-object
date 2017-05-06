@@ -1,0 +1,23 @@
+{
+  "name": "css-to-object",
+  "version": "1.0.0",
+  "description": "Convert flat CSS rule to JavaScript style object",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "keywords": [
+    "css",
+    "css-in-js",
+    "style"
+  ],
+  "author": "Brent Jackson",
+  "license": "MIT",
+  "dependencies": {
+    "css": "^2.2.1",
+    "stylis": "^2.0.4"
+  },
+  "devDependencies": {
+    "ava": "^0.19.1"
+  }
+}
