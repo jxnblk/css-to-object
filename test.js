@@ -13,7 +13,10 @@ test('parses media queries', t => {
     @media (min-width: 40em) {
       color: green;
     }
-  `)
+  `, {
+    numbers: true,
+    camelCase: true,
+  })
   t.is(typeof obj, 'object')
   t.deepEqual(obj, {
     color: 'tomato',
@@ -73,7 +76,9 @@ test('snapshot', t => {
     h1 {
       font-size: 32px;
     }
-  `)
-  console.log(JSON.stringify(obj, null, 2))
+  `, {
+    camelCase: true,
+    numbers: true
+  })
   t.snapshot(obj)
 })

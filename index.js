@@ -4,18 +4,18 @@ const stylis = require('stylis')
 const SEL = '_'
 const SELRE = new RegExp('^' + SEL)
 
-const toObj = css => {
+const toObj = (css, opts) => {
   const wrapped = stylis(SEL, css)
   const ast = parse(wrapped)
-  const obj = transform(ast.stylesheet.rules)
+  const obj = transform(opts)(ast.stylesheet.rules)
   return obj
 }
 
-const transform = (rules, result = {}) => {
+const transform = opts => (rules, result = {}) => {
   rules.forEach(rule => {
     if (rule.type === 'media') {
       const key = '@media ' + rule.media
-      const decs = transform(rule.rules)
+      const decs = transform(opts)(rule.rules)
       result[key] = decs
       return
     }
@@ -25,20 +25,20 @@ const transform = (rules, result = {}) => {
 
     if (key.length) {
       Object.assign(result, {
-        [key]: getDeclarations(rule.declarations)
+        [key]: getDeclarations(rule.declarations, opts)
       })
     } else {
-      Object.assign(result, getDeclarations(rule.declarations))
+      Object.assign(result, getDeclarations(rule.declarations, opts))
     }
   })
   return result
 }
 
-const getDeclarations = decs => {
+const getDeclarations = (decs, opts = {}) => {
   const result = decs
     .map(d => ({
-      key: camel(d.property),
-      value: parsePx(d.value)
+      key: opts.camelCase ? camel(d.property) : d.property,
+      value: opts.numbers ? parsePx(d.value) : d.value
     }))
     .reduce((a, b) => {
       a[b.key] = b.value

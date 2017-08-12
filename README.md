@@ -25,7 +25,10 @@ const style = cssToObject(`
   & h1 {
     font-size: 48px;
   }
-`)
+`, {
+  camelCase: true,
+  numbers: true
+})
 
 // {
 //   color: 'tomato',
@@ -42,5 +45,11 @@ const style = cssToObject(`
 //   }
 // }
 ```
+
+## Options
+
+- `numbers`: Converts px values to numbers
+- `camelCase`: converts CSS properties to camelCased keys
+
 
 [MIT License](LICENSE.md)
