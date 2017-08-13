@@ -51,8 +51,8 @@ const camel = str => str
   .replace(/(-[a-z])/g, x => x.toUpperCase())
   .replace(/-/g, '')
 
-const parsePx = val => /px$/.test(val)
-  ? parseFloat(val.replace(/px$/, ''))
+const parsePx = val => /^-?\d+px$/.test(val)
+  ? parseFloat(val)
   : val
 
 module.exports = toObj

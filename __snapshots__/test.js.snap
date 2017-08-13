@@ -12,6 +12,8 @@ Object {
   "h1": Object {
     "fontSize": 32,
   },
+  "left": -1,
   "margin": 32,
+  "padding": "6px 9px",
 }
 `;

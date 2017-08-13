@@ -67,6 +67,8 @@ test('snapshot', t => {
   const obj = toObj(`
     color: tomato;
     margin: 32px;
+    padding: 6px 9px;
+    left: -1px;
     @media (min-width: 40em) {
       margin: 48px;
     }
