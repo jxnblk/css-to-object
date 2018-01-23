@@ -42,6 +42,29 @@ test('parses psuedoclasses', t => {
   })
 })
 
+test('parses psuedoclasses with option to preserve ampersands (&)', t => {
+  const obj = toObj(`
+    color: tomato;
+    &:hover {
+      color: green;
+    }
+    & span {
+      color: blue;
+    }
+  `, {
+    ampersands: true
+  })
+  t.deepEqual(obj, {
+    color: 'tomato',
+    '&:hover': {
+      color: 'green'
+    },
+    '& span': {
+      color: 'blue'
+    }
+  })
+})
+
 test('parses nested selectors', t => {
   const obj = toObj(`
     color: tomato;
