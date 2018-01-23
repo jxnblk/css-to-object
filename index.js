@@ -1,4 +1,4 @@
-const { parse } = require('css')
+const parse = require('css/lib/parse')
 const stylis = require('stylis')
 
 const SEL = '_'
