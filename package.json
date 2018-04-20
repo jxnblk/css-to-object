@@ -1,23 +1,22 @@
 {
   "name": "css-to-object",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Convert flat CSS rule to JavaScript style object",
-  "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "jest"
   },
   "keywords": [
     "css",
     "css-in-js",
     "style"
   ],
+  "repository": "git@github.com:jxnblk/css-to-object.git",
   "author": "Brent Jackson",
   "license": "MIT",
   "dependencies": {
-    "css": "^2.2.1",
-    "stylis": "^2.0.4"
+    "postcss": "^6.0.21"
   },
   "devDependencies": {
-    "ava": "^0.19.1"
+    "jest": "^22.4.3"
   }
 }

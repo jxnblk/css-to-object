@@ -1,12 +1,11 @@
-const test = require('ava')
-const toObj = require('./index')
+const toObj = require('.')
 
-test('returns an object', t => {
+it('returns an object', () => {
   const obj = toObj(`color: tomato`)
-  t.is(typeof obj, 'object')
+  expect(typeof obj).toBe('object')
 })
 
-test('parses media queries', t => {
+it('parses media queries', () => {
   const obj = toObj(`
     color: tomato;
     margin-bottom: 16px;
@@ -14,11 +13,11 @@ test('parses media queries', t => {
       color: green;
     }
   `, {
-    numbers: true,
-    camelCase: true,
-  })
-  t.is(typeof obj, 'object')
-  t.deepEqual(obj, {
+      numbers: true,
+      camelCase: true,
+    })
+  expect(typeof obj).toBe('object')
+  expect(obj).toEqual({
     color: 'tomato',
     marginBottom: 16,
     '@media (min-width: 40em)': {
@@ -27,22 +26,22 @@ test('parses media queries', t => {
   })
 })
 
-test('parses psuedoclasses', t => {
+it('parses pseudoclasses', () => {
   const obj = toObj(`
     color: tomato;
     &:hover {
       color: green;
     }
   `)
-  t.deepEqual(obj, {
+  expect(obj).toEqual({
     color: 'tomato',
-    ':hover': {
+    '&:hover': {
       color: 'green'
     }
   })
 })
 
-test('parses nested selectors', t => {
+it('parses nested selectors', () => {
   const obj = toObj(`
     color: tomato;
     &:hover {
@@ -52,18 +51,18 @@ test('parses nested selectors', t => {
       color: blue;
     }
   `)
-  t.deepEqual(obj, {
+  expect(obj).toEqual({
     color: 'tomato',
-    ':hover': {
+    '&:hover': {
       color: 'green'
     },
-    'span': {
+    '& span': {
       color: 'blue'
     }
   })
 })
 
-test('snapshot', t => {
+it('snapshot', () => {
   const obj = toObj(`
     color: tomato;
     margin: 32px;
@@ -77,8 +76,8 @@ test('snapshot', t => {
       font-size: 32px;
     }
   `, {
-    camelCase: true,
-    numbers: true
-  })
-  t.snapshot(obj)
+      camelCase: true,
+      numbers: true
+    })
+  expect(obj).toMatchSnapshot()
 })

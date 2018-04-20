@@ -2,7 +2,7 @@
 
 exports[`snapshot 1`] = `
 Object {
-  ":hover": Object {
+  "&:hover": Object {
     "color": "black",
   },
   "@media (min-width: 40em)": Object {
